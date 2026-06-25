@@ -18,11 +18,12 @@ http://localhost:3000
 ## Funciones
 
 - Juego clasico de Ahorcado con teclado virtual y teclado fisico.
-- Categorias y dificultad seleccionables, con modo aleatorio.
+- Categorias por constructos psicologicos y dificultad seleccionable.
+- Progresion automatica a la siguiente palabra al acertar.
+- Temporizador obligatorio de 60 segundos por palabra.
 - Persistencia en LocalStorage sin duplicar jugadores.
 - Ranking local Top 10 por puntaje.
 - Estadisticas: partidas, victorias, derrotas, porcentaje, rachas y puntaje.
-- Temporizador de 60 segundos activable.
 - Tema claro/oscuro guardado.
 - Sonidos con boton de silencio.
 - Diseno responsive y accesible.
