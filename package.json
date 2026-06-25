@@ -1,0 +1,20 @@
+{
+  "name": "ahorcado-bienestar",
+  "version": "1.0.0",
+  "description": "Juego web de Ahorcado con Node.js, Express y JavaScript Vanilla.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "ahorcado",
+    "bienestar",
+    "express",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

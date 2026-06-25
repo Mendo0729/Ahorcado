@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahorcado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar" aria-label="Barra superior">
+      <a class="brand" href="#home-screen" aria-label="Ir al inicio">
+        <img src="assets/logo.svg" alt="" class="brand__logo">
+        <span>Ahorcado</span>
+      </a>
+      <div class="topbar__actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Cambiar tema">◐</button>
+        <button class="icon-button" id="mute-toggle" type="button" aria-label="Silenciar sonidos">♪</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen screen--active home" id="home-screen" aria-labelledby="home-title">
+        <div class="home__intro">
+          <img src="assets/logo.svg" alt="" class="home__logo">
+          <div>
+            <p class="eyebrow">Juego familiar</p>
+            <h1 id="home-title">Ahorcado</h1>
+            <p class="home__copy">Adivina palabras sobre emociones positivas, autocuidado, salud mental, mindfulness, relaciones, fortalezas y valores.</p>
+          </div>
+        </div>
+
+        <form class="panel start-panel" id="start-form">
+          <label for="player-name">Nombre del jugador</label>
+          <input id="player-name" name="playerName" type="text" maxlength="24" autocomplete="name" placeholder="Escribe tu nombre">
+          <p class="field-error" id="name-error" role="alert" aria-live="polite"></p>
+
+          <div class="form-grid">
+            <label>
+              Categoria
+              <select id="category-select">
+                <option value="random">Aleatoria</option>
+              </select>
+            </label>
+            <label>
+              Dificultad
+              <select id="difficulty-select">
+                <option value="easy">Facil</option>
+                <option value="medium" selected>Media</option>
+                <option value="hard">Dificil</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="home__buttons">
+            <button class="button button--primary" type="submit">Jugar</button>
+            <button class="button button--secondary" id="ranking-button" type="button">Ranking</button>
+            <button class="button button--secondary" id="stats-button" type="button">Estadisticas</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="screen game-layout" id="game-screen" aria-labelledby="game-title">
+        <div class="game-header">
+          <div>
+            <p class="eyebrow" id="player-label">Jugador</p>
+            <h2 id="game-title">Adivina la palabra</h2>
+          </div>
+          <div class="game-header__actions">
+            <button class="button button--secondary" id="new-game-button" type="button">Nueva</button>
+            <button class="button button--ghost" id="restart-button" type="button">Inicio</button>
+          </div>
+        </div>
+
+        <div class="status-grid" aria-label="Estado de la partida">
+          <div class="status-pill"><span>Categoria</span><strong id="category-label">-</strong></div>
+          <div class="status-pill"><span>Dificultad</span><strong id="difficulty-label">-</strong></div>
+          <div class="status-pill"><span>Puntaje</span><strong id="score-label">0</strong></div>
+          <div class="status-pill"><span>Errores</span><strong><span id="mistake-count">0</span>/6</strong></div>
+          <div class="status-pill"><span>Tiempo</span><strong id="timer-label">60</strong></div>
+        </div>
+
+        <div class="game-board">
+          <section class="panel hangman-panel" aria-label="Dibujo del ahorcado">
+            <svg class="hangman-svg" viewBox="0 0 240 240" role="img" aria-labelledby="hangman-title">
+              <title id="hangman-title">Progreso del ahorcado</title>
+              <line class="gallows" x1="32" y1="220" x2="210" y2="220"/>
+              <line class="gallows" x1="62" y1="220" x2="62" y2="26"/>
+              <line class="gallows" x1="62" y1="26" x2="156" y2="26"/>
+              <line class="gallows" x1="156" y1="26" x2="156" y2="54"/>
+              <circle class="body-part" data-part="1" cx="156" cy="75" r="21"/>
+              <line class="body-part" data-part="2" x1="156" y1="96" x2="156" y2="150"/>
+              <line class="body-part" data-part="3" x1="156" y1="112" x2="128" y2="135"/>
+              <line class="body-part" data-part="4" x1="156" y1="112" x2="184" y2="135"/>
+              <line class="body-part" data-part="5" x1="156" y1="150" x2="130" y2="186"/>
+              <line class="body-part" data-part="6" x1="156" y1="150" x2="182" y2="186"/>
+            </svg>
+          </section>
+
+          <section class="panel play-panel">
+            <p class="message" id="game-message" aria-live="polite">Elige una letra para empezar.</p>
+            <div class="word-display" id="word-display" aria-label="Palabra oculta"></div>
+            <div class="keyboard" id="keyboard" aria-label="Teclado virtual"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen panel data-view" id="ranking-screen" aria-labelledby="ranking-title">
+        <div class="view-header">
+          <div>
+            <p class="eyebrow">Top local</p>
+            <h2 id="ranking-title">Ranking</h2>
+          </div>
+          <button class="button button--secondary back-home" type="button">Inicio</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Puntaje</th>
+                <th>Victorias</th>
+                <th>Derrotas</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="screen panel data-view" id="stats-screen" aria-labelledby="stats-title">
+        <div class="view-header">
+          <div>
+            <p class="eyebrow">Resumen personal</p>
+            <h2 id="stats-title">Estadisticas</h2>
+          </div>
+          <button class="button button--secondary back-home" type="button">Inicio</button>
+        </div>
+        <div class="stats-grid" id="stats-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
