@@ -20,7 +20,7 @@ http://localhost:3000
 - Juego clasico de Ahorcado con teclado virtual y teclado fisico.
 - Categorias por constructos psicologicos y dificultad seleccionable.
 - Progresion automatica a la siguiente palabra al acertar.
-- Temporizador obligatorio de 60 segundos por palabra.
+- Temporizador obligatorio de 120 segundos por palabra.
 - Persistencia en LocalStorage sin duplicar jugadores.
 - Ranking local Top 10 por puntaje.
 - Estadisticas: partidas, victorias, derrotas, porcentaje, rachas y puntaje.

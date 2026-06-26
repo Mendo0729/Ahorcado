@@ -11,7 +11,7 @@ import {
 
 const LETTERS = "abcdefghijklmnopqrstuvwxyz".split("");
 const MAX_MISTAKES = 6;
-const TIMER_SECONDS = 60;
+const TIMER_SECONDS = 120;
 
 const difficultyNames = {
   easy: "Facil",
@@ -201,7 +201,7 @@ export class HangmanGame {
       this.nextWordTimeout = null;
       if (!this.isFinished) {
         this.loadNextWord();
-        setMessage("Nueva palabra. Tienes 60 segundos y 6 errores disponibles.");
+        setMessage("Nueva palabra. Tienes 120 segundos y 6 errores disponibles.");
       }
     }, 1100);
   }
