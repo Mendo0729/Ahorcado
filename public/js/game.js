@@ -9,7 +9,7 @@ import {
   launchConfetti
 } from "./ui.js";
 
-const LETTERS = "abcdefghijklmnopqrstuvwxyz".split("");
+const LETTERS = "abcdefghijklmnñopqrstuvwxyz".split("");
 const MAX_MISTAKES = 6;
 const TIMER_SECONDS = 120;
 

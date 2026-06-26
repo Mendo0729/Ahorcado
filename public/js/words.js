@@ -1,7 +1,7 @@
 const wordGroups = {
   "Emociones positivas": [
     "alegria", "calma", "esperanza", "gratitud", "serenidad", "entusiasmo", "optimismo",
-    "satisfaccion", "ilusion", "orgullo", "paz", "felicidad", "confianza", "carino",
+    "satisfaccion", "ilusion", "orgullo", "paz", "felicidad", "confianza", "cariño",
     "amor", "empatia", "ternura", "alivio", "agrado", "gozo", "contento", "placer",
     "aprecio", "animo", "sonrisa", "risa", "euforia", "asombro", "inspiracion",
     "seguridad", "plenitud", "armonia", "dulzura", "interes", "motivacion", "energia",
@@ -14,7 +14,7 @@ const wordGroups = {
     "beber", "ordenar", "darse", "cuidar", "mimarse", "leer", "pasear", "jugar",
     "bailar", "reir", "escribir", "dibujar", "priorizar", "organizar", "lavarse",
     "descanso", "rutina", "limites", "silencio", "siesta", "calmar", "soltar",
-    "observar", "sentir", "pedir", "ayuda", "hablar", "banarse",
+    "observar", "sentir", "pedir", "ayuda", "hablar", "bañarse",
     "nutrir", "cocinar", "cantar"
   ],
   "Salud mental": [
@@ -29,11 +29,11 @@ const wordGroups = {
   ],
   "Relaciones saludables": [
     "apoyo", "respeto", "confianza", "escucha", "empatia", "comprension", "cooperacion",
-    "amistad", "dialogo", "compania", "afecto", "union", "familia", "abrazo",
-    "perdon", "cuidado", "lealtad", "honestidad", "paciencia", "ternura", "carino",
+    "amistad", "dialogo", "compañía", "afecto", "union", "familia", "abrazo",
+    "perdon", "cuidado", "lealtad", "honestidad", "paciencia", "ternura", "cariño",
     "acuerdo", "ayuda", "equipo", "solidaridad", "cercania", "saludo", "mensaje",
     "visita", "compartir", "colaborar", "conectar", "hablar", "aceptar", "apreciar",
-    "valorar", "convivir", "acompanar",
+    "valorar", "convivir", "acompañar",
     "incluir", "proteger", "consolar", "animar", "reparar", "ceder", "celebrar"
   ],
   "Mindfulness": [
@@ -93,12 +93,15 @@ export const words = Object.entries(wordGroups).flatMap(([category, entries]) =>
 );
 
 export function normalizeText(value) {
+  const eniePlaceholder = "__enie__";
+
   return value
     .toString()
     .toLowerCase()
+    .replace(/ñ/g, eniePlaceholder)
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/\u00f1/g, "n");
+    .replaceAll(eniePlaceholder, "ñ");
 }
 
 export function getRandomWord(category = "random", difficulty = "medium") {
